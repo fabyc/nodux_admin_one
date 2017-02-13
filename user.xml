@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="user_view_form">
+            <field name="model">res.user</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="res.user_view_form"/>
+            <field name="name">user_form</field>
+        </record>
+
+        <!--Group-->
+        <record model="res.group" id="group_system_admin">
+            <field name="name">Nodux - Administrador de Sistema</field>
+        </record>
+
+        <record model="res.user-res.group"
+            id="user_admin_group_system_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_system_admin"/>
+        </record>
+
+        <record model="res.user-res.group"
+            id="user_trigger_group_system_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_system_admin"/>
+        </record>
+
+    </data>
+</tryton>
