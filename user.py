@@ -27,25 +27,6 @@ class User:
         User = pool.get('res.user')
         users_admin = User.search([('id', '=', 1)])
 
-        origin = str(companies)
-
-        def in_group():
-            pool = Pool()
-            ModelData = pool.get('ir.model.data')
-            User = pool.get('res.user')
-            Group = pool.get('res.group')
-            Module = pool.get('ir.module.module')
-            group = Group(ModelData.get_id('nodux_admin_one',
-                            'group_system_admin'))
-            transaction = Transaction()
-            user_id = transaction.user
-            if user_id == 0:
-                user_id = transaction.context.get('user', user_id)
-            if user_id == 0:
-                return True
-            user = User(user_id)
-            return origin and group in user.groups
-
         for user_admin in users:
             if user_admin.id == 1 and user_id != 1:
                 cls.raise_user_error('No puede modificar los datos de ADMINISTRADOR')
