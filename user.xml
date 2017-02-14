@@ -102,6 +102,11 @@
             <field name="rule_group" ref="rule_group_user_warning"/>
         </record>
 
+        <record model="ir.ui.menu-res.group" id="menu_administration_group_admin">
+            <field name="menu" ref="ir.menu_administration"/>
+            <field name="group" ref="group_system_admin"/>
+        </record>
+
         <!--Group-->
         <record model="res.group" id="group_change_company">
             <field name="name">Nodux - Modificar empresa</field>

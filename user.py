@@ -41,7 +41,7 @@ class User:
         if user.limite_usuario:
             limite = user.limite_usuario
         else:
-            limite = 4
+            limite = 100
 
         users_all = User.search([('id', '>', 2)])
         if len(users_all) > limite:
