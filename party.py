@@ -29,13 +29,12 @@ class Party:
             origin = str(parties)
 
             def in_group():
-
                 ModelData = pool.get('ir.model.data')
                 User = pool.get('res.user')
                 Group = pool.get('res.group')
                 Module = pool.get('ir.module.module')
                 group = Group(ModelData.get_id('nodux_admin_one',
-                                'group_system_admin'))
+                                'group_change_company'))
                 transaction = Transaction()
                 user_id = transaction.user
                 if user_id == 0:
@@ -47,6 +46,7 @@ class Party:
 
             if not in_group():
                 companies = Company.search([('id', '=', company_transaction)])
-                for company in companies:
-                    if company.party == party:
-                        cls.raise_user_error('No puede modificar los datos de la empresa')
+                if companies:
+                    for company in companies:
+                        if company.party == party:
+                            cls.raise_user_error('No puede modificar los datos de la empresa')
