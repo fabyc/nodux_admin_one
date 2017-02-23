@@ -93,19 +93,19 @@
             <field name="name">user_warning_tree</field>
         </record>
 
-        <!--record model="ir.rule.group" id="rule_group_user_warning">
+        <record model="ir.rule.group" id="rule_group_user_warning">
             <field name="model" search="[('model', '=', 'res.user.warning')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_user_warning1">
+        <!--record model="ir.rule" id="rule_user_warning1">
             <field name="domain" eval="[('user', '=', user.id)]" pyson="1"/>
             <field name="rule_group" ref="rule_group_user_warning"/>
-        </record>
+        </record-->
 
         <record model="ir.ui.menu-res.group" id="menu_administration_group_admin">
             <field name="menu" ref="ir.menu_administration"/>
             <field name="group" ref="group_system_admin"/>
-        </record-->
+        </record>
 
         <!--Group-->
         <record model="res.group" id="group_change_company">
