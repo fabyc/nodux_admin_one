@@ -23,7 +23,7 @@ class Company:
     def get_permission(cls, companies, names):
         pool = Pool()
         origin = str(companies)
-
+        transaction = Transaction()
         def in_group():
             pool = Pool()
             ModelData = pool.get('ir.model.data')
@@ -47,7 +47,10 @@ class Company:
                 if not in_group():
                     result[name][company.id] = 'False'
                 else:
-                    result[name][company.id] = 'True'
+                    if transaction.user == 1:
+                        result[name][company.id] = 'True'
+                    else:
+                        result[name][company.id] = 'False'
         return result
 
     @classmethod

@@ -21,6 +21,7 @@ class Party:
         pool = Pool()
         company_transaction = Transaction().context.get('company')
         Company = pool.get('company.company')
+        transaction = Transaction()
         for party in parties:
             if party.type_document == '04' and bool(party.vat_number):
                 super(Party, cls).validate(parties)
@@ -49,3 +50,10 @@ class Party:
                     for company in companies:
                         if company.party == party:
                             cls.raise_user_error('No puede modificar los datos de la empresa')
+            else:
+                if transaction.user != 1:
+                    companies = Company.search([('id', '=', company_transaction)])
+                    if companies:
+                        for company in companies:
+                            if company.party == party:
+                                cls.raise_user_error('No puede modificar los datos de la empresa')
