@@ -47,7 +47,10 @@ class Company:
                 if not in_group():
                     result[name][company.id] = 'False'
                 else:
-                    result[name][company.id] = 'True'
+                    if transaction.user == 1:
+                        result[name][company.id] = 'True'
+                    else:
+                        result[name][company.id] = 'False'
         return result
 
     @classmethod
