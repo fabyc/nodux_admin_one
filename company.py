@@ -23,7 +23,8 @@ class Company:
     def get_permission(cls, companies, names):
         pool = Pool()
         origin = str(companies)
-
+        transaction = Transaction()
+        
         def in_group():
             pool = Pool()
             ModelData = pool.get('ir.model.data')

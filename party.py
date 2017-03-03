@@ -22,6 +22,8 @@ class Party:
         pool = Pool()
         company_transaction = Transaction().context.get('company')
         Company = pool.get('company.company')
+        transaction = Transaction()
+
         for party in parties:
             if party.type_document == '04' and bool(party.vat_number):
                 super(Party, cls).validate(parties)
