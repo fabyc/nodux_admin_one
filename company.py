@@ -65,7 +65,7 @@ class Company:
                 Group = pool.get('res.group')
                 Module = pool.get('ir.module')
                 group = Group(ModelData.get_id('nodux_admin_one',
-                                'group_system_admin'))
+                                'group_change_company'))
                 transaction = Transaction()
                 user_id = transaction.user
                 if user_id == 0:
